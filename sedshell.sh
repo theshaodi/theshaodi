@@ -33,7 +33,8 @@ function aaa(){
     #sed -i '' 's/src="\/js/src="\/theshaodi\/js/g' $1
     #sed -i '' 's/src="\/vendor/src="\/theshaodi\/vendor/g' $1
     #sed -i '' 's/src="\/images/src="\/theshaodi\/images/g' $1
-    sed -i '' 's/安静写些东西/一点也不安静/g' $1
+    #sed -i '' 's/安静写些东西/一点也不安静/g' $1
+    sed -i '' 's/粤ICP备18028400号-1/陕ICP备17022386号/g' $1
 }
 
 for real_path in $(find $1 -path "*.html")
