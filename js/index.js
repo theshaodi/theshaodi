@@ -56,21 +56,21 @@
 
   // load after DOM built
   const documentSrcs = [
-    'js/copy.js',
-    'js/layer.js',
-    'js/scroll.js',
-    'js/backTop.js',
-    'js/time.js',
-    'js/header.js',
-    'js/passage.js',
-    'js/share.js',
-    'js/reward.js',
+    'theshaodi/js/copy.js',
+    'theshaodi/js/layer.js',
+    'theshaodi/js/scroll.js',
+    'theshaodi/js/backTop.js',
+    'theshaodi/js/time.js',
+    'theshaodi/js/header.js',
+    'theshaodi/js/passage.js',
+    'theshaodi/js/share.js',
+    'theshaodi/js/reward.js',
   ].map(item => `${root}${item}`);
 
   // load after all srcs loaded
   const windowSrcs = [
-    'js/leancloud.js',
-    'js/mathjax.js',
+    'theshaodi/js/leancloud.js',
+    'theshaodi/js/mathjax.js',
   ].map(item => `${root}${item}`);
 
   const documentSrcScripts = documentSrcs.map(src => loadScript(src));
