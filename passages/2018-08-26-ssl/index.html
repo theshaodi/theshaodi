@@ -3,10 +3,10 @@
   
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <meta name="author" content="董沅鑫">
+  <meta name="author" content="少迪">
   
   
-  <title>SSL连接并非完全安全问题解决 | 董沅鑫的个人网站</title>
+  <title>SSL连接并非完全安全问题解决 | 少迪的个人小站</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -15,10 +15,10 @@
   
 
   
-  <meta name="description" content="在https页面中加载http资源，会导致：您与此网站的链接并非完全安全， 从而失去导航栏的绿锁，取而代之的是感叹号。">
+  <meta name="description" content="在https页面中加载http资源，会导致：您与此小站的链接并非完全安全， 从而失去导航栏的绿锁，取而代之的是感叹号。">
 
   
-    <link rel="alternate" href="/atom.xml" title="董沅鑫的个人网站" type="application/atom+xml">
+    <link rel="alternate" href="/theshaodi/atom.xml" title="少迪的个人小站" type="application/atom+xml">
   
 
   
@@ -44,7 +44,7 @@
     passwords: ["b56888a08f3d2405dd37dba14af086c53fc7ed262bd33f1cabc87b2ad9343b69", ],
     is_post: true,
     lock: false,
-    author: "董沅鑫",
+    author: "少迪",
     share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
     mathjax: true,
     page_type: "",
@@ -52,23 +52,23 @@
   };
 </script>
 
-  <script src="/vendor/sha256.min.js"></script>
-<script src="/js/auth.js"></script>
-<script src="/js/index.js"></script>
-<script src="/vendor/qrcode.min.js"></script>
+  <script src="/theshaodi/vendor/sha256.min.js"></script>
+<script src="/theshaodi/js/auth.js"></script>
+<script src="/theshaodi/js/index.js"></script>
+<script src="/theshaodi/vendor/qrcode.min.js"></script>
 
   
-    <link rel="icon" href="/images/favicon.ico">
-    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+    <link rel="icon" href="/theshaodi/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/theshaodi/images/touch-icon.png">
   
 
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="/css/index.css">
-<link rel="stylesheet" href="/styles/components/highlight/highlight.css">
+  <link rel="stylesheet" href="/theshaodi/css/index.css">
+<link rel="stylesheet" href="/theshaodi/styles/components/highlight/highlight.css">
 
   
-    <link rel="stylesheet" href="/custom/style.css">
+    <link rel="stylesheet" href="/theshaodi/custom/style.css">
   
 </head>
   <body>
@@ -76,7 +76,7 @@
   <div class="site-header-brand">
     
       <span class="site-header-brand-title">
-        <a href="/">GODBMW</a>
+        <a href="/theshaodi/">GODBMW</a>
       </span>
     
     
@@ -86,7 +86,7 @@
   <div class="site-header-right">
     <nav class="site-header-navigation">
       
-        <a href="/archives/" target="_self">文章归档</a>
+        <a href="/theshaodi/archives/" target="_self">文章归档</a>
       
         <a href="/categories/设计模式手册/" target="_self">设计模式手册</a>
       
@@ -96,11 +96,11 @@
       
         <a href="/categories/" target="_self">分类云</a>
       
-        <a href="/tags/" target="_self">标签云</a>
+        <a href="/theshaodi/tags/" target="_self">标签云</a>
       
-        <a href="/friends/" target="_self">友情链接</a>
+        <a href="/theshaodi/friends/" target="_self">友情链接</a>
       
-        <a href="/about/" target="_self">了解本站</a>
+        <a href="/theshaodi/about/" target="_self">了解本站</a>
       
         <a href="https://godbmw.com/atom.xml" target="_blank">订阅RSS</a>
       
@@ -128,7 +128,7 @@
     <ol class="toc">
       
         <li class="toc-item">
-          <a href="/archives/" target="_self">
+          <a href="/theshaodi/archives/" target="_self">
             文章归档
           </a>
         </li>
@@ -158,19 +158,19 @@
         </li>
       
         <li class="toc-item">
-          <a href="/tags/" target="_self">
+          <a href="/theshaodi/tags/" target="_self">
             标签云
           </a>
         </li>
       
         <li class="toc-item">
-          <a href="/friends/" target="_self">
+          <a href="/theshaodi/friends/" target="_self">
             友情链接
           </a>
         </li>
       
         <li class="toc-item">
-          <a href="/about/" target="_self">
+          <a href="/theshaodi/about/" target="_self">
             了解本站
           </a>
         </li>
@@ -208,18 +208,18 @@
 <p>最近拿到了 TrustAsia 签发的 SSL 证书，在 Nginx 的环境下上了证书。猛然间发现：<strong>友链界面没有绿锁</strong>。走了不少弯路解决了问题，特此记录下。</p>
 </blockquote>
 <h3 id="1-问题再现"><a href="#1-问题再现" class="headerlink" title="1. 问题再现"></a>1. 问题再现</h3><p>在首页等其他页面，页面地址栏前是有绿锁的。但是，一旦进入了友链界面，发现绿锁消失了，取而代之的是，一个感叹号。情况如下面这张图所示：</p>
-<p><img src="https://godbmw.com/blog-static/images/网站搭建与运营/SSL连接并非完全问题解决/1.png" alt></p>
+<p><img src="https://godbmw.com/blog-static/images/小站搭建与运营/SSL连接并非完全问题解决/1.png" alt></p>
 <p>然后，进入其他页面，之前的绿锁也变成了感叹号。</p>
 <h3 id="2-问题排查"><a href="#2-问题排查" class="headerlink" title="2. 问题排查"></a>2. 问题排查</h3><p>最开始没有仔细观察感叹号的信息，以为是 SSL 证书没有上到位。仔细检查了 Nginx 的配置之后，确定了证书配置是没有错误的。</p>
 <p>然后，又开始怀疑是不是没有让<code>http</code>强制跳转<code>https</code>。毕竟 Nginx 的配置是个大难题，但发现不论怎么强制跳转，均是有感叹号出现，遂排除。</p>
-<p>最后，鬼使神差的看了信息：<code>您与此网站的链接并非完全安全</code>。</p>
+<p>最后，鬼使神差的看了信息：<code>您与此小站的链接并非完全安全</code>。</p>
 <blockquote>
 <p>显然，<code>SSL</code>证书配置和强制跳转<code>https</code>配置都是正确的。错误应该是：<strong>访问了<code>http</code>的静态资源</strong>。</p>
 </blockquote>
 <h3 id="3-解决"><a href="#3-解决" class="headerlink" title="3. 解决"></a>3. 解决</h3><p>打开控制台，直接<code>Ctrl + F</code>搜索<code>http</code>。发现一张友链的头像地址，是<code>http</code>资源。</p>
-<p><img src="https://godbmw.com/blog-static/images/网站搭建与运营/SSL连接并非完全问题解决/2.png" alt></p>
+<p><img src="https://godbmw.com/blog-static/images/小站搭建与运营/SSL连接并非完全问题解决/2.png" alt></p>
 <p>在数据库将资源替换成<code>https</code>资源即可，期待的绿锁又回来了。</p>
-<p><img src="https://godbmw.com/blog-static/images/网站搭建与运营/SSL连接并非完全问题解决/3.png" alt></p>
+<p><img src="https://godbmw.com/blog-static/images/小站搭建与运营/SSL连接并非完全问题解决/3.png" alt></p>
   </article>
   <aside class="table-content" id="site-toc">
   <div class="table-content-title">
@@ -232,7 +232,7 @@
 </aside>
   
     <aside class="passage-copyright">
-      <div>本文作者: 董沅鑫</div>
+      <div>本文作者: 少迪</div>
       
         <div>
           原文链接: 
@@ -247,7 +247,7 @@
   
     <div class="passage-tags">
      
-      <a href="/tags/SSL/"><i class="fa fa-tags"></i>SSL</a>
+      <a href="/theshaodi/tags/SSL/"><i class="fa fa-tags"></i>SSL</a>
     
     </div>
   
@@ -338,11 +338,11 @@
           </span>
         
           <span class="site-footer-item">
-            <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
+            <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人小站</a>
           </span>
         
           <span class="site-footer-item">
-            <a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰的官方网站</a>
+            <a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰的官方小站</a>
           </span>
         
       </div>
@@ -384,14 +384,14 @@
       <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
         
           <div>
-            <img src="/images/wechat.png" alt="WeChat">
+            <img src="/theshaodi/images/wechat.png" alt="WeChat">
             
               <p>WeChat</p>
             
           </div>
         
           <div>
-            <img src="/images/alipay.png" alt="AliPay">
+            <img src="/theshaodi/images/alipay.png" alt="AliPay">
             
               <p>AliPay</p>
             
@@ -406,10 +406,10 @@
 
 <div class="bottom-bar">
   <div class="bottom-bar-left">
-    <a href="/passages/2018-08-28-laidianmusic-chat/" data-enable="true">
+    <a href="/theshaodi/passages/2018-08-28-laidianmusic-chat/" data-enable="true">
       <i class="fa fa-arrow-left"></i>
     </a>
-    <a href="/passages/2018-08-21-momentjs/" data-enable="true">
+    <a href="/theshaodi/passages/2018-08-21-momentjs/" data-enable="true">
       <i class="fa fa-arrow-right"></i>
     </a>
   </div>

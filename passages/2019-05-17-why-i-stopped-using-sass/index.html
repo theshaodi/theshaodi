@@ -3,10 +3,10 @@
   
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <meta name="author" content="董沅鑫">
+  <meta name="author" content="少迪">
   
   
-  <title>【译】逐步替换Sass | 董沅鑫的个人网站</title>
+  <title>【译】逐步替换Sass | 少迪的个人小站</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -18,7 +18,7 @@
   <meta name="description" content="这是一篇介绍现代css核心特性的文章，并且借助sass进行横向对比，充分体现了css作为一门设计语言的快速发展以及新特性为我们开发者带来的强大生产力。第一次尝试翻译技术文，为了让文章更通俗易懂，很多地方结合了文章本意和自己的说话风格。另外，时间有限水平有限，难免有些失误或者翻译不恰当的地方，欢迎指出讨论。英文原文地址：https://cathydutton.co.uk/posts/why-i-stopped-using-sass/">
 
   
-    <link rel="alternate" href="/atom.xml" title="董沅鑫的个人网站" type="application/atom+xml">
+    <link rel="alternate" href="/theshaodi/atom.xml" title="少迪的个人小站" type="application/atom+xml">
   
 
   
@@ -44,7 +44,7 @@
     passwords: ["b56888a08f3d2405dd37dba14af086c53fc7ed262bd33f1cabc87b2ad9343b69", ],
     is_post: true,
     lock: false,
-    author: "董沅鑫",
+    author: "少迪",
     share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
     mathjax: true,
     page_type: "",
@@ -52,23 +52,23 @@
   };
 </script>
 
-  <script src="/vendor/sha256.min.js"></script>
-<script src="/js/auth.js"></script>
-<script src="/js/index.js"></script>
-<script src="/vendor/qrcode.min.js"></script>
+  <script src="/theshaodi/vendor/sha256.min.js"></script>
+<script src="/theshaodi/js/auth.js"></script>
+<script src="/theshaodi/js/index.js"></script>
+<script src="/theshaodi/vendor/qrcode.min.js"></script>
 
   
-    <link rel="icon" href="/images/favicon.ico">
-    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+    <link rel="icon" href="/theshaodi/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/theshaodi/images/touch-icon.png">
   
 
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="/css/index.css">
-<link rel="stylesheet" href="/styles/components/highlight/highlight.css">
+  <link rel="stylesheet" href="/theshaodi/css/index.css">
+<link rel="stylesheet" href="/theshaodi/styles/components/highlight/highlight.css">
 
   
-    <link rel="stylesheet" href="/custom/style.css">
+    <link rel="stylesheet" href="/theshaodi/custom/style.css">
   
 </head>
   <body>
@@ -76,7 +76,7 @@
   <div class="site-header-brand">
     
       <span class="site-header-brand-title">
-        <a href="/">GODBMW</a>
+        <a href="/theshaodi/">GODBMW</a>
       </span>
     
     
@@ -86,7 +86,7 @@
   <div class="site-header-right">
     <nav class="site-header-navigation">
       
-        <a href="/archives/" target="_self">文章归档</a>
+        <a href="/theshaodi/archives/" target="_self">文章归档</a>
       
         <a href="/categories/设计模式手册/" target="_self">设计模式手册</a>
       
@@ -96,11 +96,11 @@
       
         <a href="/categories/" target="_self">分类云</a>
       
-        <a href="/tags/" target="_self">标签云</a>
+        <a href="/theshaodi/tags/" target="_self">标签云</a>
       
-        <a href="/friends/" target="_self">友情链接</a>
+        <a href="/theshaodi/friends/" target="_self">友情链接</a>
       
-        <a href="/about/" target="_self">了解本站</a>
+        <a href="/theshaodi/about/" target="_self">了解本站</a>
       
         <a href="https://godbmw.com/atom.xml" target="_blank">订阅RSS</a>
       
@@ -128,7 +128,7 @@
     <ol class="toc">
       
         <li class="toc-item">
-          <a href="/archives/" target="_self">
+          <a href="/theshaodi/archives/" target="_self">
             文章归档
           </a>
         </li>
@@ -158,19 +158,19 @@
         </li>
       
         <li class="toc-item">
-          <a href="/tags/" target="_self">
+          <a href="/theshaodi/tags/" target="_self">
             标签云
           </a>
         </li>
       
         <li class="toc-item">
-          <a href="/friends/" target="_self">
+          <a href="/theshaodi/friends/" target="_self">
             友情链接
           </a>
         </li>
       
         <li class="toc-item">
-          <a href="/about/" target="_self">
+          <a href="/theshaodi/about/" target="_self">
             了解本站
           </a>
         </li>
@@ -207,8 +207,8 @@
     <h2 id="翻译说明"><a href="#翻译说明" class="headerlink" title="翻译说明"></a>翻译说明</h2><p>这是一篇介绍现代css核心特性的文章，并且借助sass进行横向对比，充分体现了css作为一门设计语言的快速发展以及新特性为我们开发者带来的强大生产力。</p>
 <p>第一次尝试翻译技术文，为了让文章更通俗易懂，很多地方结合了文章本意和自己的说话风格。另外，时间有限水平有限，难免有些失误或者翻译不恰当的地方，欢迎指出讨论。</p>
 <p><strong>英文原文地址</strong>：<a href="https://cathydutton.co.uk/posts/why-i-stopped-using-sass/" target="_blank" rel="noopener">https://cathydutton.co.uk/posts/why-i-stopped-using-sass/</a></p>
-<h2 id="正文开始"><a href="#正文开始" class="headerlink" title="正文开始"></a>正文开始</h2><p>我每年都要重新搭建和设计我的网站，这是一个非常不错的方式去跟进HTML/CSS的最新进展、开发模式和网站生成器。在上个月，我发布了新版本：从Jekyll和GithubPages 迁移到Eleventy和Netlify。</p>
-<p>一开始，我并没有移除代码中所有的sass代码。这本不是我计划中的事情，但随着我不断查看sass代码，我一直在思考：它们是否给网站带来了价值，还是仅仅增加了复杂度和依赖性(特指对：scss)？随着这年css的发展，曾经让我使用sass的原因似乎不那么重要了。</p>
+<h2 id="正文开始"><a href="#正文开始" class="headerlink" title="正文开始"></a>正文开始</h2><p>我每年都要重新搭建和设计我的小站，这是一个非常不错的方式去跟进HTML/CSS的最新进展、开发模式和小站生成器。在上个月，我发布了新版本：从Jekyll和GithubPages 迁移到Eleventy和Netlify。</p>
+<p>一开始，我并没有移除代码中所有的sass代码。这本不是我计划中的事情，但随着我不断查看sass代码，我一直在思考：它们是否给小站带来了价值，还是仅仅增加了复杂度和依赖性(特指对：scss)？随着这年css的发展，曾经让我使用sass的原因似乎不那么重要了。</p>
 <p>其中一个例子就是我已经移除了媒体查询。当我了解到CSS的一些新的特性，那些针对特定屏幕大小的代码（媒体查询）没有必要，因此被移除了。</p>
 <h2 id="Sass解决了什么问题？"><a href="#Sass解决了什么问题？" class="headerlink" title="Sass解决了什么问题？"></a>Sass解决了什么问题？</h2><p>大概5、6年前，我第一次了解到sass的时候，我是有些换衣的。随着我搭建越来越多的响应式web应用，我才意识到借助sass的 <code>functions</code> 和 <code>mixins</code> 可以大大提高代码复用。显而易见的是，随着设备、视图窗口和主题等场景的变化，使用（sass的）变量让代码迁移的成本更低。</p>
 <p>下面是我用sass做的事情：</p>
@@ -231,12 +231,12 @@
 </blockquote>
 <p>下面的的代码基于内容的宽度范围，创建了一个响应式布局，并且不再需要预设和计算设备的大小。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.project</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>( auto-fill, minmax(12em, 1fr) );</span><br><span class="line">  <span class="attribute">grid-gap</span>: <span class="number">1em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>从sass创建网格布局转变为css原生网格布局，是一个“无痛”体验。它不仅仅能够减少对sass的依赖，还可以让我编写更灵活的代码，激发更多的设计思路以及不再使用媒体查询设计网站。</p>
+<p>从sass创建网格布局转变为css原生网格布局，是一个“无痛”体验。它不仅仅能够减少对sass的依赖，还可以让我编写更灵活的代码，激发更多的设计思路以及不再使用媒体查询设计小站。</p>
 <p>但是最明显的不足是浏览器的兼容性。Grid是目前只在最新浏览器中被支持，包括IE11、IE10。对 <code>auto-fill</code> 和 <code>auto-fit</code> 属性的支持更少，但可以通过查询规范支持来提前规避。</p>
 <h2 id="2-变量"><a href="#2-变量" class="headerlink" title="2) 变量"></a>2) 变量</h2><p>变量就是一个可能变化的值，我一直不知道css中有这个功能。今天我的大多数项目都遵循 <a href="https://cathydutton.co.uk/posts/why-i-stopped-using-sass/" target="_blank" rel="noopener">ITCSS methodology</a> ，并且创建一个配置文件专门用来存放变量定义。通常，我会为字体样式、颜色和媒体查询设置变量。</p>
 <p>之前sass的做法：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* COLORS */</span></span><br><span class="line">$colors: (</span><br><span class="line">  "<span class="selector-tag">black</span>": <span class="selector-id">#2a2a2a</span>,</span><br><span class="line">  "<span class="selector-tag">white</span>": <span class="selector-id">#fff</span>,</span><br><span class="line">  "<span class="selector-tag">grey-light</span>": <span class="selector-id">#ccc7c3</span>,</span><br><span class="line">  "<span class="selector-tag">grey-dark</span>": <span class="selector-id">#2a2a2a</span>,</span><br><span class="line">  "<span class="selector-tag">accent</span>": <span class="selector-id">#ffa600</span>,</span><br><span class="line">  "<span class="selector-tag">off-white</span>": <span class="selector-id">#f3f3f3</span>,</span><br><span class="line">  "<span class="selector-tag">sky-blue</span>": <span class="selector-id">#ccf2ff</span></span><br><span class="line"> );</span><br><span class="line"></span><br><span class="line"><span class="comment">/* BREAKPOINTS */</span></span><br><span class="line">$breakpoints: (</span><br><span class="line">  "<span class="selector-tag">break-mobile</span>": 290<span class="selector-tag">px</span>,</span><br><span class="line">  "<span class="selector-tag">break-phablet</span>": 480<span class="selector-tag">px</span>,</span><br><span class="line">  "<span class="selector-tag">break-tablet</span>": 768<span class="selector-tag">px</span>,</span><br><span class="line">  "<span class="selector-tag">break-desktop</span>": 1020<span class="selector-tag">px</span>,</span><br><span class="line">  "<span class="selector-tag">break-wide</span>": 1280<span class="selector-tag">px</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* TYPOGRAPHY */</span></span><br><span class="line">$font-stack: (</span><br><span class="line">  decorative: #&#123;'oswald', Helvetica, sans-serif&#125;,</span><br><span class="line">  general: #&#123;'Helvetica Neue', Helvetica, Arial, sans-serif&#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>使用变量或者映射让我的网站能够快速和简单地应对大的改动。它也预防了在大型代码项目中过分堆积复杂的外形、颜色变量，特别是hover悬浮的动画、引用、边框等等。</p>
+<p>使用变量或者映射让我的小站能够快速和简单地应对大的改动。它也预防了在大型代码项目中过分堆积复杂的外形、颜色变量，特别是hover悬浮的动画、引用、边框等等。</p>
 <p>例如下面场景：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.button</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#4CAF50</span>; <span class="comment">/* Green */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.button</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#3F8C42</span>; <span class="comment">/* Dark Green */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.button</span><span class="selector-pseudo">:active</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#266528</span>; <span class="comment">/* Darker Green */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>能够被sass的变量和颜色相关的内置函数重写：</p>
@@ -266,7 +266,7 @@
 </aside>
   
     <aside class="passage-copyright">
-      <div>本文作者: 董沅鑫</div>
+      <div>本文作者: 少迪</div>
       
         <div>
           原文链接: 
@@ -281,13 +281,13 @@
   
     <div class="passage-tags">
      
-      <a href="/tags/Scss/"><i class="fa fa-tags"></i>Scss</a>
+      <a href="/theshaodi/tags/Scss/"><i class="fa fa-tags"></i>Scss</a>
      
-      <a href="/tags/CSS3/"><i class="fa fa-tags"></i>CSS3</a>
+      <a href="/theshaodi/tags/CSS3/"><i class="fa fa-tags"></i>CSS3</a>
      
-      <a href="/tags/UI设计/"><i class="fa fa-tags"></i>UI设计</a>
+      <a href="/theshaodi/tags/UI设计/"><i class="fa fa-tags"></i>UI设计</a>
      
-      <a href="/tags/前端开发/"><i class="fa fa-tags"></i>前端开发</a>
+      <a href="/theshaodi/tags/前端开发/"><i class="fa fa-tags"></i>前端开发</a>
     
     </div>
   
@@ -378,11 +378,11 @@
           </span>
         
           <span class="site-footer-item">
-            <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
+            <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人小站</a>
           </span>
         
           <span class="site-footer-item">
-            <a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰的官方网站</a>
+            <a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰的官方小站</a>
           </span>
         
       </div>
@@ -424,14 +424,14 @@
       <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
         
           <div>
-            <img src="/images/wechat.png" alt="WeChat">
+            <img src="/theshaodi/images/wechat.png" alt="WeChat">
             
               <p>WeChat</p>
             
           </div>
         
           <div>
-            <img src="/images/alipay.png" alt="AliPay">
+            <img src="/theshaodi/images/alipay.png" alt="AliPay">
             
               <p>AliPay</p>
             
@@ -446,10 +446,10 @@
 
 <div class="bottom-bar">
   <div class="bottom-bar-left">
-    <a href="/passages/2019-05-18-serverless-page-counter/" data-enable="true">
+    <a href="/theshaodi/passages/2019-05-18-serverless-page-counter/" data-enable="true">
       <i class="fa fa-arrow-left"></i>
     </a>
-    <a href="/passages/2019-05-02-node-block-chain/" data-enable="true">
+    <a href="/theshaodi/passages/2019-05-02-node-block-chain/" data-enable="true">
       <i class="fa fa-arrow-right"></i>
     </a>
   </div>

@@ -3,10 +3,10 @@
   
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  <meta name="author" content="董沅鑫">
+  <meta name="author" content="少迪">
   
   
-  <title>MathJax：让前端支持数学公式 | 董沅鑫的个人网站</title>
+  <title>MathJax：让前端支持数学公式 | 少迪的个人小站</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -18,7 +18,7 @@
   <meta name="description" content="经过博主一番折腾，终于让博客支持Latex数学公式了。以后写公式，再也不需要截图了！我是一条行内公式：$\alpha+\beta=\gamma$我是一条跨行公式：$$\alpha+\beta=\gamma$$我是超级长长长的跨行公式：$$\int_{0}^{1}f(x)dx \sum_{1}^{2}\int_{0}^{1}f(x)dx \sum_{1}^{2}\int_{0}^{1}f(x)dx \sum_{1}^{2}\int_{0}^{1}f(x)dx \sum_{1}^{2}\int_{0}^{1}f(x)dx \sum_{1}^{2}\int_{0}^{1}f(x)dx \sum_{1}^{2}\int_{0}^{1}f(x)dx \sum_{1}^{2}\int_{0}^{1}f(x)dx \sum_{1}^{2}\int_{0}^{1}f(x)dx \sum_{1}^{2}\int_{0}^{1}f(x)dx \sum_{1}^{2}$$">
 
   
-    <link rel="alternate" href="/atom.xml" title="董沅鑫的个人网站" type="application/atom+xml">
+    <link rel="alternate" href="/theshaodi/atom.xml" title="少迪的个人小站" type="application/atom+xml">
   
 
   
@@ -44,7 +44,7 @@
     passwords: ["b56888a08f3d2405dd37dba14af086c53fc7ed262bd33f1cabc87b2ad9343b69", ],
     is_post: true,
     lock: false,
-    author: "董沅鑫",
+    author: "少迪",
     share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
     mathjax: true,
     page_type: "",
@@ -52,23 +52,23 @@
   };
 </script>
 
-  <script src="/vendor/sha256.min.js"></script>
-<script src="/js/auth.js"></script>
-<script src="/js/index.js"></script>
-<script src="/vendor/qrcode.min.js"></script>
+  <script src="/theshaodi/vendor/sha256.min.js"></script>
+<script src="/theshaodi/js/auth.js"></script>
+<script src="/theshaodi/js/index.js"></script>
+<script src="/theshaodi/vendor/qrcode.min.js"></script>
 
   
-    <link rel="icon" href="/images/favicon.ico">
-    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+    <link rel="icon" href="/theshaodi/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/theshaodi/images/touch-icon.png">
   
 
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="/css/index.css">
-<link rel="stylesheet" href="/styles/components/highlight/highlight.css">
+  <link rel="stylesheet" href="/theshaodi/css/index.css">
+<link rel="stylesheet" href="/theshaodi/styles/components/highlight/highlight.css">
 
   
-    <link rel="stylesheet" href="/custom/style.css">
+    <link rel="stylesheet" href="/theshaodi/custom/style.css">
   
 </head>
   <body>
@@ -76,7 +76,7 @@
   <div class="site-header-brand">
     
       <span class="site-header-brand-title">
-        <a href="/">GODBMW</a>
+        <a href="/theshaodi/">GODBMW</a>
       </span>
     
     
@@ -86,7 +86,7 @@
   <div class="site-header-right">
     <nav class="site-header-navigation">
       
-        <a href="/archives/" target="_self">文章归档</a>
+        <a href="/theshaodi/archives/" target="_self">文章归档</a>
       
         <a href="/categories/设计模式手册/" target="_self">设计模式手册</a>
       
@@ -96,11 +96,11 @@
       
         <a href="/categories/" target="_self">分类云</a>
       
-        <a href="/tags/" target="_self">标签云</a>
+        <a href="/theshaodi/tags/" target="_self">标签云</a>
       
-        <a href="/friends/" target="_self">友情链接</a>
+        <a href="/theshaodi/friends/" target="_self">友情链接</a>
       
-        <a href="/about/" target="_self">了解本站</a>
+        <a href="/theshaodi/about/" target="_self">了解本站</a>
       
         <a href="https://godbmw.com/atom.xml" target="_blank">订阅RSS</a>
       
@@ -128,7 +128,7 @@
     <ol class="toc">
       
         <li class="toc-item">
-          <a href="/archives/" target="_self">
+          <a href="/theshaodi/archives/" target="_self">
             文章归档
           </a>
         </li>
@@ -158,19 +158,19 @@
         </li>
       
         <li class="toc-item">
-          <a href="/tags/" target="_self">
+          <a href="/theshaodi/tags/" target="_self">
             标签云
           </a>
         </li>
       
         <li class="toc-item">
-          <a href="/friends/" target="_self">
+          <a href="/theshaodi/friends/" target="_self">
             友情链接
           </a>
         </li>
       
         <li class="toc-item">
-          <a href="/about/" target="_self">
+          <a href="/theshaodi/about/" target="_self">
             了解本站
           </a>
         </li>
@@ -208,7 +208,7 @@
 <h3 id="1-2-效果展示"><a href="#1-2-效果展示" class="headerlink" title="1.2 效果展示"></a>1.2 效果展示</h3><p>数学公式分为行内公式和跨行公式，当然都需要支持和渲染。</p>
 <p>我准备了3条公式，分别是行内公式、跨行公式和超长的跨行公式：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$\alpha+\beta=\gamma$</span><br><span class="line"></span><br><span class="line">$$\alpha+\beta=\gamma$$</span><br><span class="line"></span><br><span class="line">$$\int_&#123;0&#125;^&#123;1&#125;f(x)dx \sum_&#123;1&#125;^&#123;2&#125;\int_&#123;0&#125;^&#123;1&#125;f(x)dx \sum_&#123;1&#125;^&#123;2&#125;\int_&#123;0&#125;^&#123;1&#125;f(x)dx \sum_&#123;1&#125;^&#123;2&#125;\int_&#123;0&#125;^&#123;1&#125;f(x)dx \sum_&#123;1&#125;^&#123;2&#125;\int_&#123;0&#125;^&#123;1&#125;f(x)dx \sum_&#123;1&#125;^&#123;2&#125;\int_&#123;0&#125;^&#123;1&#125;f(x)dx \sum_&#123;1&#125;^&#123;2&#125;\int_&#123;0&#125;^&#123;1&#125;f(x)dx \sum_&#123;1&#125;^&#123;2&#125;\int_&#123;0&#125;^&#123;1&#125;f(x)dx \sum_&#123;1&#125;^&#123;2&#125;\int_&#123;0&#125;^&#123;1&#125;f(x)dx \sum_&#123;1&#125;^&#123;2&#125;\int_&#123;0&#125;^&#123;1&#125;f(x)dx \sum_&#123;1&#125;^&#123;2&#125;$$</span><br></pre></td></tr></table></figure>
-<p>这篇测试文章的地址是:<a href="https://godbmw.com/passage/12"><code>https://godbmw.com/passage/12</code></a>。效果图如下所示：<br><img src="https://godbmw.com/blog-static/images/网站搭建与运营/MathJax：让前端支持数学公式/1.png" alt></p>
+<p>这篇测试文章的地址是:<a href="https://godbmw.com/passage/12"><code>https://godbmw.com/passage/12</code></a>。效果图如下所示：<br><img src="https://godbmw.com/blog-static/images/小站搭建与运营/MathJax：让前端支持数学公式/1.png" alt></p>
 <h2 id="2-使用MathJax"><a href="#2-使用MathJax" class="headerlink" title="2. 使用MathJax"></a>2. 使用MathJax</h2><h3 id="2-1-引入CDN"><a href="#2-1-引入CDN" class="headerlink" title="2.1 引入CDN"></a>2.1 引入CDN</h3><p>在使用MathJax之前，需要通过CDN引入, 在<code>&lt;body&gt;</code>标签中添加：<br><code>&lt;script type=&quot;text/javascript&quot; async src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;&lt;/script&gt;</code>。</p>
 <h3 id="2-2-配置MathJax"><a href="#2-2-配置MathJax" class="headerlink" title="2.2 配置MathJax"></a>2.2 配置MathJax</h3><p>将MathJax的配置封装成一个函数：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> isMathjaxConfig = <span class="literal">false</span>; <span class="comment">// 防止重复调用Config，造成性能损耗</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> initMathjaxConfig = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="built_in">window</span>.MathJax) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">window</span>.MathJax.Hub.Config(&#123;</span><br><span class="line">    showProcessingMessages: <span class="literal">false</span>, <span class="comment">//关闭js加载过程信息</span></span><br><span class="line">    messageStyle: <span class="string">"none"</span>, <span class="comment">//不显示信息</span></span><br><span class="line">    jax: [<span class="string">"input/TeX"</span>, <span class="string">"output/HTML-CSS"</span>],</span><br><span class="line">    tex2jax: &#123;</span><br><span class="line">      inlineMath: [[<span class="string">"$"</span>, <span class="string">"$"</span>], [<span class="string">"\\("</span>, <span class="string">"\\)"</span>]], <span class="comment">//行内公式选择符</span></span><br><span class="line">      displayMath: [[<span class="string">"$$"</span>, <span class="string">"$$"</span>], [<span class="string">"\\["</span>, <span class="string">"\\]"</span>]], <span class="comment">//段内公式选择符</span></span><br><span class="line">      skipTags: [<span class="string">"script"</span>, <span class="string">"noscript"</span>, <span class="string">"style"</span>, <span class="string">"textarea"</span>, <span class="string">"pre"</span>, <span class="string">"code"</span>, <span class="string">"a"</span>] <span class="comment">//避开某些标签</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"HTML-CSS"</span>: &#123;</span><br><span class="line">      availableFonts: [<span class="string">"STIX"</span>, <span class="string">"TeX"</span>], <span class="comment">//可选字体</span></span><br><span class="line">      showMathMenu: <span class="literal">false</span> <span class="comment">//关闭右击菜单显示</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  isMathjaxConfig = <span class="literal">true</span>; <span class="comment">// </span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -240,7 +240,7 @@
 </aside>
   
     <aside class="passage-copyright">
-      <div>本文作者: 董沅鑫</div>
+      <div>本文作者: 少迪</div>
       
         <div>
           原文链接: 
@@ -255,11 +255,11 @@
   
     <div class="passage-tags">
      
-      <a href="/tags/第三方库/"><i class="fa fa-tags"></i>第三方库</a>
+      <a href="/theshaodi/tags/第三方库/"><i class="fa fa-tags"></i>第三方库</a>
      
-      <a href="/tags/JavaScript/"><i class="fa fa-tags"></i>JavaScript</a>
+      <a href="/theshaodi/tags/JavaScript/"><i class="fa fa-tags"></i>JavaScript</a>
      
-      <a href="/tags/Latex/"><i class="fa fa-tags"></i>Latex</a>
+      <a href="/theshaodi/tags/Latex/"><i class="fa fa-tags"></i>Latex</a>
     
     </div>
   
@@ -350,11 +350,11 @@
           </span>
         
           <span class="site-footer-item">
-            <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
+            <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人小站</a>
           </span>
         
           <span class="site-footer-item">
-            <a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰的官方网站</a>
+            <a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰的官方小站</a>
           </span>
         
       </div>
@@ -396,14 +396,14 @@
       <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
         
           <div>
-            <img src="/images/wechat.png" alt="WeChat">
+            <img src="/theshaodi/images/wechat.png" alt="WeChat">
             
               <p>WeChat</p>
             
           </div>
         
           <div>
-            <img src="/images/alipay.png" alt="AliPay">
+            <img src="/theshaodi/images/alipay.png" alt="AliPay">
             
               <p>AliPay</p>
             
@@ -418,10 +418,10 @@
 
 <div class="bottom-bar">
   <div class="bottom-bar-left">
-    <a href="/passages/2018-10-05-music-api-next-docs/" data-enable="true">
+    <a href="/theshaodi/passages/2018-10-05-music-api-next-docs/" data-enable="true">
       <i class="fa fa-arrow-left"></i>
     </a>
-    <a href="/passages/2018-09-30-tencent-cdn/" data-enable="true">
+    <a href="/theshaodi/passages/2018-09-30-tencent-cdn/" data-enable="true">
       <i class="fa fa-arrow-right"></i>
     </a>
   </div>
