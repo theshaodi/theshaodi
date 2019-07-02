@@ -39,7 +39,8 @@ function aaa(){
     #sed -i '' 's/QQ交流群/QQ/g' $1
     #sed -i '' 's/534018786/284928489/g' $1
     #sed -i '' 's/www\.zhihu\.com\/people\/godbmw\/activities/www\.zhihu\.com\/people\/wang-shao-di-56\/activities/g' $1
-    sed -i '' 's/www\.jianshu\.com\/u\/d1570f4a618a/www\.jianshu\.com/g' $1
+    #sed -i '' 's/www\.jianshu\.com\/u\/d1570f4a618a/www\.jianshu\.com/g' $1
+    sed -i '' 's/blog\.csdn\.net\/AsuraDong/blog\.csdn\.net/g' $1
 }
 
 for real_path in $(find $1 -path "*.html")
