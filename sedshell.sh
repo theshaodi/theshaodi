@@ -41,7 +41,8 @@ function aaa(){
     #sed -i '' 's/www\.zhihu\.com\/people\/godbmw\/activities/www\.zhihu\.com\/people\/wang-shao-di-56\/activities/g' $1
     #sed -i '' 's/www\.jianshu\.com\/u\/d1570f4a618a/www\.jianshu\.com/g' $1
     #sed -i '' 's/blog\.csdn\.net\/AsuraDong/blog\.csdn\.net/g' $1
-    sed -i '' 's/segmentfault\.com\/u\/godbmw/segmentfault\.com/g' $1
+    #sed -i '' 's/segmentfault\.com\/u\/godbmw/segmentfault\.com/g' $1
+    sed -i '' 's/juejin\.im\/user\/5b91fcf06fb9a05d3c7fd4a5/juejin\.im/g' $1
 }
 
 for real_path in $(find $1 -path "*.html")
