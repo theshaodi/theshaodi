@@ -37,7 +37,8 @@ function aaa(){
     #sed -i '' 's/粤ICP备18028400号-1/陕ICP备17022386号/g' $1
     #sed -i '' 's/yuanxin\.me@gmail\.com/fengzhong_yue@163\.com/g' $1
     #sed -i '' 's/QQ交流群/QQ/g' $1
-    sed -i '' 's/534018786/284928489/g' $1
+    #sed -i '' 's/534018786/284928489/g' $1
+    sed -i '' 's/www\.zhihu\.com\/people\/godbmw\/activities/www\.zhihu\.com\/people\/wang-shao-di-56\/activities/g' $1
 }
 
 for real_path in $(find $1 -path "*.html")
