@@ -13,7 +13,7 @@ fi
 
 
 function aaa(){
-   # sed -i '' 's/董沅鑫/少迪/g' $1
+    #sed -i '' 's/董沅鑫/少迪/g' $1
     #sed -i '' 's/网站/小站/g' $1
     #sed -i '' 's/href="\/atom/href="\/theshaodi\/atom/g' $1
     #sed -i '' 's/href="\/image/href="\/theshaodi\/image/g' $1
@@ -23,7 +23,7 @@ function aaa(){
     #sed -i '' 's/href="\/custom/href="\/theshaodi\/custom/g' $1
     #sed -i '' 's/href="\/"/href="\/theshaodi\/"/g' $1
     #sed -i '' 's/href="\/archives/href="\/theshaodi\/archives/g' $1
-    sed -i '' 's/href="\/categories/href="\/theshaodi\/categories/g' $1
+    #sed -i '' 's/href="\/categories/href="\/theshaodi\/categories/g' $1
     #sed -i '' 's/href="\/tags/href="\/theshaodi\/tags/g' $1
     #sed -i '' 's/href="\/friends/href="\/theshaodi\/friends/g' $1
     #sed -i '' 's/href="\/about/href="\/theshaodi\/about/g' $1
@@ -35,6 +35,9 @@ function aaa(){
     #sed -i '' 's/src="\/images/src="\/theshaodi\/images/g' $1
     #sed -i '' 's/安静写些东西/一点也不安静/g' $1
     #sed -i '' 's/粤ICP备18028400号-1/陕ICP备17022386号/g' $1
+    #sed -i '' 's/yuanxin\.me@gmail\.com/fengzhong_yue@163\.com/g' $1
+    #sed -i '' 's/QQ交流群/QQ/g' $1
+    sed -i '' 's/534018786/284928489/g' $1
 }
 
 for real_path in $(find $1 -path "*.html")
