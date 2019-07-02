@@ -1,1 +1,138 @@
-My Page
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="fx.css">
+  </head>
+  <style>
+* {
+    padding: 0;
+    margin: 0;
+}
+  </style>
+
+  <body align="center" onload='run()' style='background-image: linear-gradient(90deg,#654ea3,#eaafc8);'>
+    <div>
+      <canvas id='scene' width='500px' height='500px' style='background:linear-gradient(240deg,#D3CCE3,#E9E4F0);'></canvas>
+    </div>
+    <!-- <a href="https://github.com/anvaka/atree"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a> -->
+
+    <div>
+      <button class="btn-fx-bubble" style="margin:10px">Bubble</button>
+      <button class="btn-fx-jelly"  style="margin:10px">Jelly</button>
+      <button class="btn-fx-pulse" style="margin:10px">Pulse</button>
+      <button class="btn-fx-shine" style="margin:10px">Shine</button>
+      <button class="btn-fx-slide" style="margin:10px">Slide</button>
+    </div>
+    <div style="margin:5px;">
+      <div class="fx-input-outline-blue-div" style="margin:10px">
+        <input class="fx-input-outline-blue-input" type="text" placeholder="Input Outline">
+        <span class="fx-input-outline-blue-span fx-input-outline-blue-bottom"></span>
+        <span class="fx-input-outline-blue-span fx-input-outline-blue-right"></span>
+        <span class="fx-input-outline-blue-span fx-input-outline-blue-top"></span>
+        <span class="fx-input-outline-blue-span fx-input-outline-blue-left"></span>
+      </div>
+      <div class="fx-input-outline-red-div" style="margin:10px">
+        <input class="fx-input-outline-red-input" type="text" placeholder="Input Outline">
+        <span class="fx-input-outline-red-span fx-input-outline-red-bottom"></span>
+        <span class="fx-input-outline-red-span fx-input-outline-red-right"></span>
+        <span class="fx-input-outline-red-span fx-input-outline-red-top"></span>
+        <span class="fx-input-outline-red-span fx-input-outline-red-left"></span>
+      </div>
+    </div>
+    <div style="margin:5px;">
+      <div class="fx-input-underline-red-div" style="margin:10px">
+        <input class="fx-input-underline-red-input" type="text" placeholder="Input Underline">
+        <span class="fx-input-underline-red-span"></span>
+      </div>
+    </div>
+    <div style="margin:10px">
+      <span class="fx-span-blue-bars1-span" style="margin:10px">Bars</span>
+      <span class="fx-span-red-bars1-span" style="margin:10px">Bars</span>
+      <span class="fx-span-blue-bars2-span" style="margin:10px">Bars</span>
+    </div>
+    <div style="margin:10px">
+      <span class="fx-span-highlight-span" style="margin:10px">Highlight</span>
+      <span class="fx-span-highlight2-span" style="margin:10px">Highlight</span>
+    </div>
+    <div style="margin:10px">
+      <span class="fx-span-overline-1-span" style="margin:10px">Overline</span>
+      <span class="fx-span-overline-2-span" style="margin:10px">Overline</span>
+    </div>
+    <div style="margin:10px">
+      <span class="fx-span-pillars-1-span" style="margin:10px">Pillars</span>
+      <span class="fx-span-pillars-2-span" style="margin:10px">Pillars</span>
+      <span class="fx-span-pillars-3-span" style="margin:10px">Pillars</span>
+    </div>
+    <div style="margin:10px">
+      <span class="fx-span-Strikethrough-1-span">Strikethrough</span>
+    </div>
+    <div style="margin:10px">
+      <span class="fx-span-underline-1-span" style="margin:10px">Underline</span>
+      <span class="fx-span-underline-2-span" style="margin:10px">Underline</span>
+      <span class="fx-span-underline-3-span" style="margin:10px">Underline</span>
+    </div>
+    <div style="margin:15px">
+      <div class="fx-wait-icon-accordion-div">
+        <span class="fx-wait-icon-accordion-span"></span>
+        <span class="fx-wait-icon-accordion-span"></span>
+        <span class="fx-wait-icon-accordion-span"></span>
+        <span class="fx-wait-icon-accordion-span"></span>
+      </div>
+    </div>
+    <div style="margin:15px">
+      <div class="fx-wait-icon-red-balls">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <!-- <div style="margin:5px"> -->
+      <!-- <div class="fx-wait-icon-diamond-div" ></div> -->
+    <!-- </div> -->
+    <div style="margin:10px">
+      <svg class="fx-wait-icon-red-circle-svg-dash-svg" viewBox="25 25 50 50">
+        <circle class="fx-wait-icon-red-circle-svg-dash-circle" cx="50" cy="50" r="20"></circle>
+      </svg>
+    </div>
+
+
+    <div style="margin:5px">
+      <div class="fx-wait-icon-circle-box">
+        <div class="fx-wait-icon-circle-coin"></div>
+      </div>
+    </div>
+    <div style="margin:15px">
+      <div class="fx-wait-icon-red-dots">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div style="margin:5px">
+      <div class="fx-wait-icon-dots-dots">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div style="margin:10px">
+      <div class="fx-wait-icon-red-box-plane-flip-box">
+        <div class="fx-wait-icon-red-box-plane-flip-plane"></div>
+      </div>
+    </div>
+    <div style="margin:10px">
+      <div class="fx-wait-icon-blue-spin-circle-div"></div>
+    </div>
+    <!-- <div style="margin:15px"> -->
+      <!-- <div class="fx-wait-icon-red-spin-stretch-div"></div> -->
+    <!-- </div> -->
+  </body>
+</html>
