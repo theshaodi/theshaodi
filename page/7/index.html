@@ -6,7 +6,7 @@
   <meta name="author" content="董沅鑫">
   
   
-  <title>董沅鑫的个人网站</title>
+  <title> | 第7页 | 董沅鑫的个人网站</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -193,8 +193,12 @@
         <div class="home-article-inner" data-cover="false">
           <div class="passage-meta">
             <span>
-              <i class="fa fa-calendar"></i>2019-03-04
+              <i class="fa fa-calendar"></i>2018-10-09
             </span>
+            
+              <span>
+                | <a href="/categories/网站日志/"><i class="fa fa-bookmark"></i>网站日志</a>
+              </span>
             
             
               <span>
@@ -203,17 +207,27 @@
             
           </div>
           <h1 class="home-article-title">
-            <a href="/passages/2019-03-04-please-mark/">[置顶]一份值得收藏的知识清单</a>
+            <a href="/passages/2018-10-09-server-dead-first/">第一次遭遇云服务器完全崩溃</a>
           </h1>
           <div class="home-article-content passage-article">
             
-              <p>随着学习的深入，越来越发现<strong>知识体系</strong>的重要性。平时积累的零碎知识，如果不做关联，在一些时候（比如面试）会不堪一击。</p>
-<p>所以，特别整理和分享自己这份<strong>开袋即食</strong>的知识清单，方便自己看，也希望对大家有帮助哈~</p>
+              <blockquote>
+<p>第一次遭遇云服务器完全崩溃：CPU 突然 100%、控制台无法重启、<strong>控制台无法强制关机</strong>。一度怀疑人生。</p>
+</blockquote>
+<p>到目前为止，腾讯云的工程师和我本人都没有找到具体原因。我的猜测是：工程师们手动去关的服务器电源 :) 。至于原因，请看文章吧。</p>
             
           </div>
-          <a class="home-article-read" href="/passages/2019-03-04-please-mark/">
+          <a class="home-article-read" href="/passages/2018-10-09-server-dead-first/">
             README MORE >>>
           </a>
+          
+            <div class="passage-tags">
+             
+              <a href="/tags/服务器/"><i class="fa fa-tags"></i>服务器</a>
+             
+              <a href="/tags/网络安全/"><i class="fa fa-tags"></i>网络安全</a>
+            
+            </div>
           
         </div>
         
@@ -225,8 +239,12 @@
         <div class="home-article-inner" data-cover="false">
           <div class="passage-meta">
             <span>
-              <i class="fa fa-calendar"></i>2019-05-18
+              <i class="fa fa-calendar"></i>2018-10-09
             </span>
+            
+              <span>
+                | <a href="/categories/webpack4系列教程/"><i class="fa fa-bookmark"></i>webpack4系列教程</a>
+              </span>
             
             
               <span>
@@ -235,25 +253,23 @@
             
           </div>
           <h1 class="home-article-title">
-            <a href="/passages/2019-05-18-serverless-page-counter/">基于ServerLess的极简网页计数器：源码分析与最佳实践</a>
+            <a href="/passages/2018-10-09-webpack-js-pacakge/">webpack4 系列教程(十二)：处理第三方JavaScript库</a>
           </h1>
           <div class="home-article-content passage-article">
             
-              <p><img src="https://cdn.nlark.com/yuque/0/2019/png/233327/1558170012750-30c5b80b-d61b-4c71-9a20-6f98dbc2d81d.png#align=left&amp;display=inline&amp;height=511&amp;originHeight=898&amp;originWidth=1311&amp;status=done&amp;width=746" alt></p>
-<p>这几天基于支持HTML5无感认证的ServerLess平台开发了一款博客、门户网站等web平台常用的PV统计工具：<a href="https://github.com/dongyuanxin/page-counter" target="_blank" rel="noopener">page-counter</a> 。主要用到的技术是js+webpack。</p>
-<p>回首看来，解决了以下几个比较有意思的问题：</p>
-<ul>
-<li>如何设计代码，用统一的方式支持多个ServerLess平台？</li>
-<li>如何架构项目，使得其支持CDN和npm两种方式引入？</li>
-<li>如何精简源码，源码大小控制在4kb？</li>
-<li>如何借助webpack分离生产和测试环境？</li>
-</ul>
-<p>源码地址：<a href="https://github.com/dongyuanxin/page-counter" target="_blank" rel="noopener">https://github.com/dongyuanxin/page-counter</a></p>
-<p>npm地址：<a href="https://www.npmjs.com/package/page-counter" target="_blank" rel="noopener">https://www.npmjs.com/package/page-counter</a></p>
-<p>如果有兴趣的同学，欢迎在阅读完本文后一起接入其他平台的开发； <strong>觉得不错的同学，欢迎给个Star哦</strong> 。</p>
+              <p>项目做大之后，开发者会更多专注在业务逻辑上，其他方面则尽力使用第三方<code>JS</code>库来实现。</p>
+<p>由于<code>js</code>变化实在太快，所以出现了多种引入和管理第三方库的方法，常用的有 3 中：</p>
+<ol>
+<li>CDN：<code>&lt;script&gt;&lt;/script&gt;</code>标签引入即可</li>
+<li>npm 包管理： 目前最常用和最推荐的方法</li>
+<li>本地<code>js</code>文件：一些库由于历史原因，没有提供<code>es6</code>版本，需要手动下载，放入项目目录中，再手动引入。</li>
+</ol>
+<blockquote>
+<p>本文详细介绍了：在上面3种方法的基础上，如何配合<code>webpack</code>更优雅地引入和使用第三方<code>js</code>库。</p>
+</blockquote>
             
           </div>
-          <a class="home-article-read" href="/passages/2019-05-18-serverless-page-counter/">
+          <a class="home-article-read" href="/passages/2018-10-09-webpack-js-pacakge/">
             README MORE >>>
           </a>
           
@@ -261,13 +277,9 @@
              
               <a href="/tags/webpack/"><i class="fa fa-tags"></i>webpack</a>
              
-              <a href="/tags/数据库/"><i class="fa fa-tags"></i>数据库</a>
+              <a href="/tags/第三方库/"><i class="fa fa-tags"></i>第三方库</a>
              
-              <a href="/tags/前端开发/"><i class="fa fa-tags"></i>前端开发</a>
-             
-              <a href="/tags/云开发/"><i class="fa fa-tags"></i>云开发</a>
-             
-              <a href="/tags/ServerLess/"><i class="fa fa-tags"></i>ServerLess</a>
+              <a href="/tags/JavaScript/"><i class="fa fa-tags"></i>JavaScript</a>
             
             </div>
           
@@ -281,8 +293,12 @@
         <div class="home-article-inner" data-cover="false">
           <div class="passage-meta">
             <span>
-              <i class="fa fa-calendar"></i>2019-05-17
+              <i class="fa fa-calendar"></i>2018-10-09
             </span>
+            
+              <span>
+                | <a href="/categories/webpack4系列教程/"><i class="fa fa-bookmark"></i>webpack4系列教程</a>
+              </span>
             
             
               <span>
@@ -291,28 +307,29 @@
             
           </div>
           <h1 class="home-article-title">
-            <a href="/passages/2019-05-17-why-i-stopped-using-sass/">【译】逐步替换Sass</a>
+            <a href="/passages/2018-10-09-webpack-chracter-file/">webpack4 系列教程(十一)：字体文件处理</a>
           </h1>
           <div class="home-article-content passage-article">
             
-              <p>这是一篇介绍现代css核心特性的文章，并且借助sass进行横向对比，充分体现了css作为一门设计语言的快速发展以及新特性为我们开发者带来的强大生产力。</p>
-<p>第一次尝试翻译技术文，为了让文章更通俗易懂，很多地方结合了文章本意和自己的说话风格。另外，时间有限水平有限，难免有些失误或者翻译不恰当的地方，欢迎指出讨论。</p>
-<p><strong>英文原文地址</strong>：<a href="https://cathydutton.co.uk/posts/why-i-stopped-using-sass/" target="_blank" rel="noopener">https://cathydutton.co.uk/posts/why-i-stopped-using-sass/</a></p>
+              <blockquote>
+<p>在自己的项目中引入中意的字体样式，是让自己舒坦的重要方式 :)</p>
+</blockquote>
+<p>源码地址如下：</p>
+<ul>
+<li><a href="https://github.com/dongyuanxin/webpack-demos/tree/master/demo11" target="_blank" rel="noopener">&gt;&gt;&gt;本节课源码</a></li>
+<li><a href="https://github.com/dongyuanxin/webpack-demos" target="_blank" rel="noopener">&gt;&gt;&gt;所有课程源码</a></li>
+</ul>
             
           </div>
-          <a class="home-article-read" href="/passages/2019-05-17-why-i-stopped-using-sass/">
+          <a class="home-article-read" href="/passages/2018-10-09-webpack-chracter-file/">
             README MORE >>>
           </a>
           
             <div class="passage-tags">
              
-              <a href="/tags/Scss/"><i class="fa fa-tags"></i>Scss</a>
+              <a href="/tags/webpack/"><i class="fa fa-tags"></i>webpack</a>
              
-              <a href="/tags/CSS3/"><i class="fa fa-tags"></i>CSS3</a>
-             
-              <a href="/tags/UI设计/"><i class="fa fa-tags"></i>UI设计</a>
-             
-              <a href="/tags/前端开发/"><i class="fa fa-tags"></i>前端开发</a>
+              <a href="/tags/字体处理/"><i class="fa fa-tags"></i>字体处理</a>
             
             </div>
           
@@ -326,8 +343,12 @@
         <div class="home-article-inner" data-cover="false">
           <div class="passage-meta">
             <span>
-              <i class="fa fa-calendar"></i>2019-05-02
+              <i class="fa fa-calendar"></i>2018-10-09
             </span>
+            
+              <span>
+                | <a href="/categories/数据结构和算法/"><i class="fa fa-bookmark"></i>数据结构和算法</a>
+              </span>
             
             
               <span>
@@ -336,30 +357,31 @@
             
           </div>
           <h1 class="home-article-title">
-            <a href="/passages/2019-05-02-node-block-chain/">NodeJS实现简易区块链</a>
+            <a href="/passages/2018-10-09-binary-search-tree/">二叉搜索树的实现与常见用法</a>
           </h1>
           <div class="home-article-content passage-article">
             
-              <p>之前由于课程要求，基于Nodejs做了一个实现简易区块链。要求非常简单，结构体记录区块结构，顺便能向链中插入新的区块即可。</p>
-<p>但是如果要支持多用户使用，就需要考虑“可信度”的问题。那么按照区块链要求，链上的数据不能被篡改，除非算力超过除了攻击者本身之外其余所以机器的算力。</p>
-<p>想了想，就动手做试试咯。</p>
+              <blockquote>
+<p>二叉搜索树是一颗空树，或者具有以下性质的二叉树：</p>
+</blockquote>
+<ul>
+<li>若任意节点的左子树不空，则左子树上所有节点的值均小于它的根节点的值</li>
+<li>若任意节点的右子树不空，则右子树上所有节点的值均大于它的根节点的值</li>
+<li>任意节点的左、右子树也分别为二叉查找树</li>
+<li>没有键值相等的节点</li>
+</ul>
+<p>这种数据结构可以高效解决查找问题、实现字典结构，值得一提的是，这些操作的算法复杂度均是：$O(\log_2 n)$</p>
             
           </div>
-          <a class="home-article-read" href="/passages/2019-05-02-node-block-chain/">
+          <a class="home-article-read" href="/passages/2018-10-09-binary-search-tree/">
             README MORE >>>
           </a>
           
             <div class="passage-tags">
-             
-              <a href="/tags/ES6/"><i class="fa fa-tags"></i>ES6</a>
-             
-              <a href="/tags/Node/"><i class="fa fa-tags"></i>Node</a>
-             
-              <a href="/tags/区块链/"><i class="fa fa-tags"></i>区块链</a>
              
               <a href="/tags/数据结构/"><i class="fa fa-tags"></i>数据结构</a>
              
-              <a href="/tags/后台开发/"><i class="fa fa-tags"></i>后台开发</a>
+              <a href="/tags/C与C/"><i class="fa fa-tags"></i>C与C++</a>
             
             </div>
           
@@ -373,7 +395,7 @@
         <div class="home-article-inner" data-cover="false">
           <div class="passage-meta">
             <span>
-              <i class="fa fa-calendar"></i>2019-04-16
+              <i class="fa fa-calendar"></i>2018-10-07
             </span>
             
             
@@ -383,18 +405,72 @@
             
           </div>
           <h1 class="home-article-title">
-            <a href="/passages/2019-04-16-axios/">axios全局代理实战</a>
+            <a href="/passages/2018-10-07-ubuntu-user/">Ubuntu创建新用户的正确姿势</a>
           </h1>
           <div class="home-article-content passage-article">
             
-              <p>在项目中，为了方便使用，对<code>axios</code>进行了二次封装，原因如下：</p>
-<ol>
-<li>由于内网服务器的安全策略，put、delete等方法的请求无法发送到后台</li>
-<li>为了方便快速对接后端服务器，api接口的前缀、安全策略过期时间等通用配置应该抽离</li>
-</ol>
+              <p>最近在学习《系统编程》，老师让创建新的用户，以<code>name+学号</code>的格式命名，来防止抄袭。</p>
+<p>因此，每次到一台新电脑，都要在 ubuntu 上创建新用户。<strong>然而，<code>sudo useradd 用户名</code>只能创建用户，却无法在<code>/home/</code>中创建用户目录，也无法设置用户权限。</strong></p>
+<p>查了很多篇博客，为了方便查阅，记录一下创建新用户并且分配权限的正确方法。</p>
             
           </div>
-          <a class="home-article-read" href="/passages/2019-04-16-axios/">
+          <a class="home-article-read" href="/passages/2018-10-07-ubuntu-user/">
+            README MORE >>>
+          </a>
+          
+            <div class="passage-tags">
+             
+              <a href="/tags/服务器/"><i class="fa fa-tags"></i>服务器</a>
+             
+              <a href="/tags/Ubuntu/"><i class="fa fa-tags"></i>Ubuntu</a>
+            
+            </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  
+    <div class="home-article-wrapper clearfix">
+      <div class="home-article" data-cover="false">
+        <div class="home-article-inner" data-cover="false">
+          <div class="passage-meta">
+            <span>
+              <i class="fa fa-calendar"></i>2018-10-05
+            </span>
+            
+              <span>
+                | <a href="/categories/开源项目/"><i class="fa fa-bookmark"></i>开源项目</a>
+              </span>
+            
+            
+              <span>
+                | <i class="fa fa-unlock-alt"></i>UNLOCK
+              </span>
+            
+          </div>
+          <h1 class="home-article-title">
+            <a href="/passages/2018-10-05-music-api-next/">music-api-next：一款支持网易、虾米和QQ音乐的JS爬虫库</a>
+          </h1>
+          <div class="home-article-content passage-article">
+            
+              <blockquote>
+<p>如果你苦于挑选一个全方位、多平台、简便易用的音乐爬虫库，<code>music-api-next</code>是不二选择。</p>
+</blockquote>
+<p>特性：</p>
+<ul>
+<li>支持网易、虾米和QQ三大主流音乐平台</li>
+<li>支持音乐关键词搜索</li>
+<li>支持音乐链接下载</li>
+<li>支持音乐评论爬取</li>
+<li>支持回调和<code>async/await</code>写法</li>
+<li>支持<code>webpack</code>打包部署</li>
+<li>支持<code>pm2</code>服务器部署</li>
+<li>可用、高效、稳定</li>
+</ul>
+            
+          </div>
+          <a class="home-article-read" href="/passages/2018-10-05-music-api-next/">
             README MORE >>>
           </a>
           
@@ -402,11 +478,9 @@
              
               <a href="/tags/第三方库/"><i class="fa fa-tags"></i>第三方库</a>
              
-              <a href="/tags/ES6/"><i class="fa fa-tags"></i>ES6</a>
+              <a href="/tags/爬虫/"><i class="fa fa-tags"></i>爬虫</a>
              
-              <a href="/tags/设计模式/"><i class="fa fa-tags"></i>设计模式</a>
-             
-              <a href="/tags/前端开发/"><i class="fa fa-tags"></i>前端开发</a>
+              <a href="/tags/npm/"><i class="fa fa-tags"></i>npm</a>
             
             </div>
           
@@ -420,7 +494,103 @@
         <div class="home-article-inner" data-cover="false">
           <div class="passage-meta">
             <span>
-              <i class="fa fa-calendar"></i>2019-04-15
+              <i class="fa fa-calendar"></i>2018-10-05
+            </span>
+            
+              <span>
+                | <a href="/categories/开源项目/"><i class="fa fa-bookmark"></i>开源项目</a>
+              </span>
+            
+            
+              <span>
+                | <i class="fa fa-unlock-alt"></i>UNLOCK
+              </span>
+            
+          </div>
+          <h1 class="home-article-title">
+            <a href="/passages/2018-10-05-music-api-next-docs-zh/">music-api-next 中文文档</a>
+          </h1>
+          <div class="home-article-content passage-article">
+            
+              <blockquote>
+<p><code>music-api-next</code>中文文档：一个可以快速从QQ音乐、虾米音乐和网易音乐获得歌曲搜索结果、歌曲链接信息和歌曲评论的第三方库。</p>
+</blockquote>
+<p>如果您有任何问题或者建议，欢迎在本文页面评论。</p>
+            
+          </div>
+          <a class="home-article-read" href="/passages/2018-10-05-music-api-next-docs-zh/">
+            README MORE >>>
+          </a>
+          
+            <div class="passage-tags">
+             
+              <a href="/tags/第三方库/"><i class="fa fa-tags"></i>第三方库</a>
+             
+              <a href="/tags/爬虫/"><i class="fa fa-tags"></i>爬虫</a>
+             
+              <a href="/tags/npm/"><i class="fa fa-tags"></i>npm</a>
+            
+            </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  
+    <div class="home-article-wrapper clearfix">
+      <div class="home-article" data-cover="false">
+        <div class="home-article-inner" data-cover="false">
+          <div class="passage-meta">
+            <span>
+              <i class="fa fa-calendar"></i>2018-10-05
+            </span>
+            
+              <span>
+                | <a href="/categories/开源项目/"><i class="fa fa-bookmark"></i>开源项目</a>
+              </span>
+            
+            
+              <span>
+                | <i class="fa fa-unlock-alt"></i>UNLOCK
+              </span>
+            
+          </div>
+          <h1 class="home-article-title">
+            <a href="/passages/2018-10-05-music-api-next-docs/">music-api-next DOCS</a>
+          </h1>
+          <div class="home-article-content passage-article">
+            
+              <blockquote>
+<p>The English document of <code>music-api-next</code>: music API for search results, songs, comments from QQ, Xiami and Netease.</p>
+</blockquote>
+<p>If you have any question, welcome to comment here.</p>
+            
+          </div>
+          <a class="home-article-read" href="/passages/2018-10-05-music-api-next-docs/">
+            README MORE >>>
+          </a>
+          
+            <div class="passage-tags">
+             
+              <a href="/tags/第三方库/"><i class="fa fa-tags"></i>第三方库</a>
+             
+              <a href="/tags/爬虫/"><i class="fa fa-tags"></i>爬虫</a>
+             
+              <a href="/tags/npm/"><i class="fa fa-tags"></i>npm</a>
+            
+            </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  
+    <div class="home-article-wrapper clearfix">
+      <div class="home-article" data-cover="false">
+        <div class="home-article-inner" data-cover="false">
+          <div class="passage-meta">
+            <span>
+              <i class="fa fa-calendar"></i>2018-10-03
             </span>
             
             
@@ -430,31 +600,31 @@
             
           </div>
           <h1 class="home-article-title">
-            <a href="/passages/2019-04-15-wechat-h5-login/">微信网页登录逻辑与实现</a>
+            <a href="/passages/2018-10-03-js-mathjax/">MathJax：让前端支持数学公式</a>
           </h1>
           <div class="home-article-content passage-article">
             
-              <p>现在的网站开发，都绕不开微信登录（毕竟微信已经成为国民工具）。虽然文档已经写得很详细，但是对于没有经验的开发者还是容易踩坑。</p>
-<p>所以，专门记录一下微信网页认证的交互逻辑，也方便自己日后回查：</p>
-<ol>
-<li>加载微信网页sdk</li>
-<li>绘制登陆二维码：新tab页面绘制 / 本页面iframe绘制</li>
-<li>用户扫码登陆，前端跳入回调网址</li>
-<li>回调网址进一步做逻辑处理，如果是页内iframe绘制二维码，需要通知顶级页</li>
-</ol>
+              <blockquote>
+<p>经过博主一番折腾，终于让博客支持<code>Latex</code>数学公式了。以后写公式，再也不需要截图了！</p>
+</blockquote>
+<p>我是一条行内公式：$\alpha+\beta=\gamma$</p>
+<p>我是一条跨行公式：</p>
+<p>$$\alpha+\beta=\gamma$$</p>
+<p>我是超级长长长的跨行公式：</p>
+<p>$$\int_{0}^{1}f(x)dx \sum_{1}^{2}\int_{0}^{1}f(x)dx \sum_{1}^{2}\int_{0}^{1}f(x)dx \sum_{1}^{2}\int_{0}^{1}f(x)dx \sum_{1}^{2}\int_{0}^{1}f(x)dx \sum_{1}^{2}\int_{0}^{1}f(x)dx \sum_{1}^{2}\int_{0}^{1}f(x)dx \sum_{1}^{2}\int_{0}^{1}f(x)dx \sum_{1}^{2}\int_{0}^{1}f(x)dx \sum_{1}^{2}\int_{0}^{1}f(x)dx \sum_{1}^{2}$$</p>
             
           </div>
-          <a class="home-article-read" href="/passages/2019-04-15-wechat-h5-login/">
+          <a class="home-article-read" href="/passages/2018-10-03-js-mathjax/">
             README MORE >>>
           </a>
           
             <div class="passage-tags">
+             
+              <a href="/tags/第三方库/"><i class="fa fa-tags"></i>第三方库</a>
              
               <a href="/tags/JavaScript/"><i class="fa fa-tags"></i>JavaScript</a>
              
-              <a href="/tags/前端开发/"><i class="fa fa-tags"></i>前端开发</a>
-             
-              <a href="/tags/微信开发/"><i class="fa fa-tags"></i>微信开发</a>
+              <a href="/tags/Latex/"><i class="fa fa-tags"></i>Latex</a>
             
             </div>
           
@@ -468,43 +638,7 @@
         <div class="home-article-inner" data-cover="false">
           <div class="passage-meta">
             <span>
-              <i class="fa fa-calendar"></i>2019-04-11
-            </span>
-            
-              <span>
-                | <a href="/categories/环游记/"><i class="fa fa-bookmark"></i>环游记</a>
-              </span>
-            
-            
-              <span>
-                | <i class="fa fa-unlock-alt"></i>UNLOCK
-              </span>
-            
-          </div>
-          <h1 class="home-article-title">
-            <a href="/passages/2019-04-11-changsha-travel/">清明长沙游</a>
-          </h1>
-          <div class="home-article-content passage-article">
-            
-              <p>清明放假前，终于过了腾讯云的提校招提前批，阿里的面试也基本告一段落。忙完了所有事情，匆忙准备下，准备好了money，就出发去了广东北部的湖南长沙。</p>
-<p>也多亏晓和健哥不辞辛苦地当导游，ღ( ´･ᴗ･` )比心！让两天的旅途丰富多彩，该吃的都吃了，该玩的都玩了，特此记录一下有意义的事情。</p>
-            
-          </div>
-          <a class="home-article-read" href="/passages/2019-04-11-changsha-travel/">
-            README MORE >>>
-          </a>
-          
-        </div>
-        
-      </div>
-    </div>
-  
-    <div class="home-article-wrapper clearfix">
-      <div class="home-article" data-cover="false">
-        <div class="home-article-inner" data-cover="false">
-          <div class="passage-meta">
-            <span>
-              <i class="fa fa-calendar"></i>2019-04-10
+              <i class="fa fa-calendar"></i>2018-09-30
             </span>
             
             
@@ -514,123 +648,26 @@
             
           </div>
           <h1 class="home-article-title">
-            <a href="/passages/2019-04-10-html5-drag-drop/">HTML5原生拖放事件的学习与实践</a>
+            <a href="/passages/2018-09-30-tencent-cdn/">CDN使用心得：加速双刃剑</a>
           </h1>
           <div class="home-article-content passage-article">
             
-              <p>之前学习了HTML5的拖放事件，开发中也用到了拖拽组件。为了厘清整体的逻辑，专门做了一个小例子。</p>
-<p>具体实现的效果也很简单：元素可以在容器中任意拖动，元素被移入容器的时候，还会有相关样式的改变已达到更好的展示效果。</p>
-<p>例子基本运用了拖放事件的全部事件，并且尽量简洁的展示了出来。特此记录。</p>
+              <blockquote>
+<p>本文以腾讯云平台的CDN服务为例，记录下在个人网站开发和公司项目实战中的对CDN使用的心得。</p>
+</blockquote>
+<p>CDN的全称是Content Delivery Network，即内容分发网络。其目的是通过在现有的Internet中增加一层新的网络架构，将网站的内容发布到最接近用户的网络“边缘”，使用户可以就近取得所需的内容，提高用户访问网站的响应速度。</p>
+<p><strong>可以简单理解成：CDN就是一个能让用户以最快速度访问到相应资源的网盘。</strong></p>
             
           </div>
-          <a class="home-article-read" href="/passages/2019-04-10-html5-drag-drop/">
+          <a class="home-article-read" href="/passages/2018-09-30-tencent-cdn/">
             README MORE >>>
           </a>
           
             <div class="passage-tags">
              
-              <a href="/tags/JavaScript/"><i class="fa fa-tags"></i>JavaScript</a>
+              <a href="/tags/前端优化/"><i class="fa fa-tags"></i>前端优化</a>
              
-              <a href="/tags/CSS3/"><i class="fa fa-tags"></i>CSS3</a>
-             
-              <a href="/tags/HTML5/"><i class="fa fa-tags"></i>HTML5</a>
-            
-            </div>
-          
-        </div>
-        
-      </div>
-    </div>
-  
-    <div class="home-article-wrapper clearfix">
-      <div class="home-article" data-cover="true">
-        <div class="home-article-inner" data-cover="true">
-          <div class="passage-meta">
-            <span>
-              <i class="fa fa-calendar"></i>2019-04-09
-            </span>
-            
-              <span>
-                | <a href="/categories/前端面试手记/"><i class="fa fa-bookmark"></i>前端面试手记</a>
-              </span>
-            
-            
-              <span>
-                | <i class="fa fa-unlock-alt"></i>UNLOCK
-              </span>
-            
-          </div>
-          <h1 class="home-article-title">
-            <a href="/passages/2019-04-09-es6/">ES6重难点整理</a>
-          </h1>
-          <div class="home-article-content passage-article">
-            
-              <p>👇 内容速览 👇</p>
-<ul>
-<li>let和const</li>
-<li>Set和Map</li>
-<li>Generator和yield</li>
-<li>Promise、async/await介绍</li>
-<li>Proxy代理器</li>
-<li>…</li>
-</ul>
-            
-          </div>
-          <a class="home-article-read" href="/passages/2019-04-09-es6/">
-            README MORE >>>
-          </a>
-          
-            <div class="passage-tags">
-             
-              <a href="/tags/ES6/"><i class="fa fa-tags"></i>ES6</a>
-             
-              <a href="/tags/面试/"><i class="fa fa-tags"></i>面试</a>
-            
-            </div>
-          
-        </div>
-        
-          <div class="home-article-cover">
-            <img src="https://source.unsplash.com/400x400/?es6,javascript,code">
-          </div>
-        
-      </div>
-    </div>
-  
-    <div class="home-article-wrapper clearfix">
-      <div class="home-article" data-cover="false">
-        <div class="home-article-inner" data-cover="false">
-          <div class="passage-meta">
-            <span>
-              <i class="fa fa-calendar"></i>2019-04-08
-            </span>
-            
-            
-              <span>
-                | <i class="fa fa-unlock-alt"></i>UNLOCK
-              </span>
-            
-          </div>
-          <h1 class="home-article-title">
-            <a href="/passages/2019-04-08-react-components-communication/">React中的组件通信</a>
-          </h1>
-          <div class="home-article-content passage-article">
-            
-              <p>最近在做react开发的时候，需要在多级组件之间进行有效通信。这里所说的多级组件，可能是父子组件、兄弟组件，还可能是两个完全不相关的组件。</p>
-<p><strong>那么问题是：有没有一种方法可以统一实现组件之间的通信？不借助redux等第三方库，降低依赖性，保证代码简洁，还要保证通用性</strong>。</p>
-            
-          </div>
-          <a class="home-article-read" href="/passages/2019-04-08-react-components-communication/">
-            README MORE >>>
-          </a>
-          
-            <div class="passage-tags">
-             
-              <a href="/tags/JavaScript/"><i class="fa fa-tags"></i>JavaScript</a>
-             
-              <a href="/tags/ReactJS/"><i class="fa fa-tags"></i>ReactJS</a>
-             
-              <a href="/tags/前端开发/"><i class="fa fa-tags"></i>前端开发</a>
+              <a href="/tags/CDN/"><i class="fa fa-tags"></i>CDN</a>
             
             </div>
           
@@ -771,10 +808,10 @@
 
 <div class="bottom-bar">
   <div class="bottom-bar-left">
-    <a href="javascript:void(0);" data-enable="false">
+    <a href="/page/6/" data-enable="true">
       <i class="fa fa-arrow-left"></i>
     </a>
-    <a href="/page/2/" data-enable="true">
+    <a href="/page/8/" data-enable="true">
       <i class="fa fa-arrow-right"></i>
     </a>
   </div>

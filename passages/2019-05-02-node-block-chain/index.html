@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="author" content="董沅鑫">
+  
+  
+  <title>NodeJS实现简易区块链 | 董沅鑫的个人网站</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="ES6,Node,区块链,数据结构,后台开发,">
+  
+
+  
+  <meta name="description" content="之前由于课程要求，基于Nodejs做了一个实现简易区块链。要求非常简单，结构体记录区块结构，顺便能向链中插入新的区块即可。但是如果要支持多用户使用，就需要考虑“可信度”的问题。那么按照区块链要求，链上的数据不能被篡改，除非算力超过除了攻击者本身之外其余所以机器的算力。想了想，就动手做试试咯。">
+
+  
+    <link rel="alternate" href="/atom.xml" title="董沅鑫的个人网站" type="application/atom+xml">
+  
+
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+
+  
+    <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"j3TlSqBMjoXnrIrNYB5En5Y1-gzGzoHsz","appkey":"d2rWR1nq5chvzXzh3bSyB8ug","comment":false,"count":false},
+    welcome: {"enable":true,"interval":30},
+    start_time: "2018-02-10",
+    passwords: ["b56888a08f3d2405dd37dba14af086c53fc7ed262bd33f1cabc87b2ad9343b69", ],
+    is_post: true,
+    lock: false,
+    author: "董沅鑫",
+    share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/"
+  };
+</script>
+
+  <script src="/vendor/sha256.min.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/index.js"></script>
+<script src="/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/styles/components/highlight/highlight.css">
+
+  
+    <link rel="stylesheet" href="/custom/style.css">
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/">GODBMW</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | 安静写些东西</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/archives/" target="_self">文章归档</a>
+      
+        <a href="/categories/设计模式手册/" target="_self">设计模式手册</a>
+      
+        <a href="/categories/前端面试手记/" target="_self">前端体系整理</a>
+      
+        <a href="/categories/webpack4系列教程/" target="_self">Webpack4教程</a>
+      
+        <a href="/categories/" target="_self">分类云</a>
+      
+        <a href="/tags/" target="_self">标签云</a>
+      
+        <a href="/friends/" target="_self">友情链接</a>
+      
+        <a href="/about/" target="_self">了解本站</a>
+      
+        <a href="https://godbmw.com/atom.xml" target="_blank">订阅RSS</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/dongyuanxin/blog" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/archives/" target="_self">
+            文章归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/categories/设计模式手册/" target="_self">
+            设计模式手册
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/categories/前端面试手记/" target="_self">
+            前端体系整理
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/categories/webpack4系列教程/" target="_self">
+            Webpack4教程
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/categories/" target="_self">
+            分类云
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/tags/" target="_self">
+            标签云
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/friends/" target="_self">
+            友情链接
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/about/" target="_self">
+            了解本站
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="https://godbmw.com/atom.xml" target="_blank">
+            订阅RSS
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-05-02
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    NodeJS实现简易区块链
+  </h1>
+  
+  <article class="passage-article">
+    <p>之前由于课程要求，基于Nodejs做了一个实现简易区块链。要求非常简单，结构体记录区块结构，顺便能向链中插入新的区块即可。</p>
+<p>但是如果要支持多用户使用，就需要考虑“可信度”的问题。那么按照区块链要求，链上的数据不能被篡改，除非算力超过除了攻击者本身之外其余所以机器的算力。</p>
+<p>想了想，就动手做试试咯。</p>
+<h2 id="技术调研"><a href="#技术调研" class="headerlink" title="技术调研"></a>技术调研</h2><p>在google上搜了搜，发现有个项目不错： <a href="https://github.com/lhartikk/naivechain" target="_blank" rel="noopener">https://github.com/lhartikk/naivechain</a> 。大概只有200行，但是其中几十行都是关于搭建ws和http服务器，美中不足的是没有实现批量插入区块链和计算可信度。</p>
+<p>结合这个项目，基本上可以确定每个区块会封装成一个class（结构化表示），区块链也封装成一个class，再对外暴露接口。</p>
+<h2 id="区块定义"><a href="#区块定义" class="headerlink" title="区块定义"></a>区块定义</h2><p>为了方便表示区块，将其封装为一个class，它没有任何方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 区块信息的结构化定义</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Block</span> </span>&#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 构造函数</span></span><br><span class="line"><span class="comment">   * @param &#123;Number&#125; index </span></span><br><span class="line"><span class="comment">   * @param &#123;String&#125; previousHash </span></span><br><span class="line"><span class="comment">   * @param &#123;Number&#125; timestamp </span></span><br><span class="line"><span class="comment">   * @param &#123;*&#125; data </span></span><br><span class="line"><span class="comment">   * @param &#123;String&#125; hash </span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">constructor</span>(index, previousHash, timestamp, data, hash) &#123;</span><br><span class="line">    <span class="keyword">this</span>.index = index <span class="comment">// 区块的位置</span></span><br><span class="line">    <span class="keyword">this</span>.previousHash = previousHash + <span class="string">''</span> <span class="comment">// 前一个区块的hash</span></span><br><span class="line">    <span class="keyword">this</span>.timestamp = timestamp <span class="comment">// 生成区块时候的时间戳</span></span><br><span class="line">    <span class="keyword">this</span>.data = data <span class="comment">// 区块本身携带的数据</span></span><br><span class="line">    <span class="keyword">this</span>.hash = hash + <span class="string">''</span> <span class="comment">// 区块根据自身信息和规则生成的hash</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>至于怎么生成hash，这里采用的规则比较简单：</p>
+<ol>
+<li>拼接index、previouHash、timestamp和data，将其字符串化</li>
+<li>利用sha256算法，计算出的记过就是hash</li>
+</ol>
+<p>为了方便，会引入一个加密库：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> CryptoJS = <span class="built_in">require</span>(<span class="string">'crypto-js'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="链结构定义"><a href="#链结构定义" class="headerlink" title="链结构定义"></a>链结构定义</h2><p>很多区块链接在一起，就组成了一条链。这条链，也用class来表示。并且其中实现了很多方法：</p>
+<ol>
+<li>按照加密规则生成hash</li>
+<li>插入新块和检查操作</li>
+<li>批量插入块和检查操作以及可信度计算</li>
+</ol>
+<h3 id="1-起源块"><a href="#1-起源块" class="headerlink" title="1. 起源块"></a>1. 起源块</h3><p>起源块是“硬编码”，因为它前面没数据呀。并且规定它不能被篡改，即不能强制覆盖。我们在构造函数中，直接将生成的起源块放入链中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BlockChain</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">this</span>.blocks = [<span class="keyword">this</span>.getGenesisBlock()]</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 创建区块链起源块, 此块是硬编码</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  getGenesisBlock() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Block(<span class="number">0</span>, <span class="string">'0'</span>, <span class="number">1552801194452</span>, <span class="string">'genesis block'</span>, <span class="string">'810f9e854ade9bb8730d776ea02622b65c02b82ffa163ecfe4cb151a14412ed4'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-计算下一个区块"><a href="#2-计算下一个区块" class="headerlink" title="2. 计算下一个区块"></a>2. 计算下一个区块</h3><p>BlockChain对象可以根据当前链，自动计算下一个区块。并且与用户传来的区块信息比较，如果一样，说明合法，可以插入；否则，用户的区块就是非法的，不允许插入。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法都是BlockChain对象方法</span></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 根据信息计算hash值</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  calcuteHash(index, previousHash, timestamp, data) &#123;</span><br><span class="line">    <span class="keyword">return</span> CryptoJS.SHA256(index + previousHash + timestamp + data) + <span class="string">''</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 得到区块链中最后一个块节点</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  getLatestBlock() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.blocks[<span class="keyword">this</span>.blocks.length - <span class="number">1</span>]</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 计算当前链表的下一个区块</span></span><br><span class="line"><span class="comment">   * @param &#123;*&#125; blockData </span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  generateNextBlock(blockData) &#123;</span><br><span class="line">    <span class="keyword">const</span> previousBlock = <span class="keyword">this</span>.getLatestBlock()</span><br><span class="line">    <span class="keyword">const</span> nextIndex = previousBlock.index + <span class="number">1</span></span><br><span class="line">    <span class="keyword">const</span> nextTimeStamp = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime()</span><br><span class="line">    <span class="keyword">const</span> nextHash = <span class="keyword">this</span>.calcuteHash(nextIndex, previousBlock.hash, nextTimeStamp, blockData)</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Block(nextIndex, previousBlock.hash, nextTimeStamp, blockData, nextHash)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-插入区块"><a href="#3-插入区块" class="headerlink" title="3. 插入区块"></a>3. 插入区块</h3><p>插入区块的时候，需要检查当前块是否合法，如果合法，那么插入并且返回true；否则返回false。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 向区块链添加新节点</span></span><br><span class="line"><span class="comment"> * @param &#123;Block&#125; newBlock </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">addBlock(newBlock) &#123;</span><br><span class="line">  <span class="comment">// 合法区块</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.isValidNewBlock(newBlock, <span class="keyword">this</span>.getLatestBlock())) &#123;</span><br><span class="line">    <span class="keyword">this</span>.blocks.push(newBlock)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>  </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>检查的逻辑就就放在了 <code>isValidNewBlock</code> 方法中, 它主要完成3件事情：</p>
+<ol>
+<li>判断新区块的index是否是递增的</li>
+<li>判断previousHash是否和前一个区块的hash相等</li>
+<li>判断新区块的hash是否按约束好的规则生成</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 判断新加入的块是否合法</span></span><br><span class="line"><span class="comment"> * @param &#123;Block&#125; newBlock </span></span><br><span class="line"><span class="comment"> * @param &#123;Block&#125; previousBlock </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">isValidNewBlock(newBlock, previousBlock) &#123;</span><br><span class="line">  <span class="keyword">if</span>(</span><br><span class="line">    !(newBlock <span class="keyword">instanceof</span> Block) ||</span><br><span class="line">    !(previousBlock <span class="keyword">instanceof</span> Block)</span><br><span class="line">  ) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 判断index</span></span><br><span class="line">  <span class="keyword">if</span>(newBlock.index !== previousBlock.index + <span class="number">1</span>) &#123; </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 判断hash值</span></span><br><span class="line">  <span class="keyword">if</span>(newBlock.previousHash !== previousBlock.hash) &#123; </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 计算新块的hash值是否符合规则</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.calcuteHash(newBlock.index, newBlock.previousHash, newBlock.timestamp, newBlock.data) !== newBlock.hash) &#123; </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-批量插入"><a href="#4-批量插入" class="headerlink" title="4. 批量插入"></a>4. 批量插入</h3><p>批量插入的逻辑比较复杂，比如当前链上有4个区块的下标是：0-&gt;1-&gt;2-&gt;3。除了起源块0不能被覆盖，当插入一条新的下标为“1-&gt;2-&gt;3-&gt;4”的链时候，就可以替换原来的区块。最终结果是：0-&gt;1-&gt;2-&gt;3-&gt;4。</p>
+<p>在下标index的处理上，假设还是上面的情况，如果传入的链的下标是从大于4的整数开始，显然无法拼接原来的区块链的下标，直接扔掉。</p>
+<p>但是如何保证可信度呢？就是当新链（B链）替换原来的链（A链）后，生成新的链（C链）。如果 length(C) &gt; length(A)，那么即可覆盖要替换的部分。 <strong>这就保证了，只有在算力超过所有算力50%的时候，才能篡改这条链</strong> 。</p>
+<p>插入新链的方法如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 插入新链表</span></span><br><span class="line"><span class="comment"> * @param &#123;Array&#125; newChain </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">addChain(newChain) &#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.isValidNewChain(newChain)) &#123;</span><br><span class="line">    <span class="keyword">const</span> index = newChain[<span class="number">0</span>].index</span><br><span class="line">    <span class="keyword">this</span>.blocks.splice(index)</span><br><span class="line">    <span class="keyword">this</span>.blocks = <span class="keyword">this</span>.blocks.concat(newChain)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>实现上面所述逻辑的方法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 判断新插入的区块链是否合法而且可以覆盖原来的节点</span></span><br><span class="line"><span class="comment"> * @param &#123;Array&#125; newChain </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">isValidNewChain(newChain) &#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(newChain) === <span class="literal">false</span> || newChain.length === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> newChainLength = newChain.length,</span><br><span class="line">    firstBlock = newChain[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 硬编码的起源块不能改变</span></span><br><span class="line">  <span class="keyword">if</span>(firstBlock.index === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 移植新的链的长度 &lt;= 现有链的长度</span></span><br><span class="line">  <span class="comment">// 新的链不可信</span></span><br><span class="line">  <span class="keyword">if</span>(newChainLength + firstBlock.index &lt;= <span class="keyword">this</span>.blocks.length) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 下面检查新的链能否移植</span></span><br><span class="line">  <span class="comment">// 以及新的链的每个节点是否符合规则</span></span><br><span class="line">  <span class="keyword">if</span>(!<span class="keyword">this</span>.isValidNewBlock(firstBlock, <span class="keyword">this</span>.blocks[firstBlock.index - <span class="number">1</span>])) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; newChainLength; ++i) &#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="keyword">this</span>.isValidNewBlock(newChain[i], newChain[i - <span class="number">1</span>])) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>### </p>
+<h3 id="5-为什么需要批量插入？"><a href="#5-为什么需要批量插入？" class="headerlink" title="5. 为什么需要批量插入？"></a>5. 为什么需要批量插入？</h3><p>我当时很奇怪，为什么需要“批量插入”这个方法。后来想明白了（希望没想错）。假设服务器S，以及两个用户A与B。</p>
+<p>A与B同时拉取到已知链的数据，然后各自生成。A网速较快，但是算力低，就生成了1个区块，放入了S上。注意：此时S上的区块已经更新。</p>
+<p>而B比较惨了，它在本地生成了2个区块，但是受限于网速，只能等网速恢复了传入区块。这时候，按照规则，它是可以覆盖的（算力高嘛）。所以这种情况下，服务器S接受到B的2个区块，更新后的链长度是3（算上起源块），并且A的那个区块已经被覆盖了。</p>
+<h2 id="效果测试"><a href="#效果测试" class="headerlink" title="效果测试"></a>效果测试</h2><p>虽然没有写服务器，但是还是模拟了上面讲述的第5种情况。代码在 <code>test.js</code> 文件中，直接run即可。看下效果截图吧：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/233327/1556860848657-fa0a6f9c-1c6f-4494-b8eb-686a1f60b5c8.png#align=left&amp;display=inline&amp;height=369&amp;name=image.png&amp;originHeight=461&amp;originWidth=1745&amp;size=88863&amp;status=done&amp;width=1396" alt="image.png"></p>
+<p>红线上面就是先算出来的，红线下面就是被算力更高的客户端篡改后的区块链。具体模拟过程可以看代码，这里不再冗赘了。</p>
+<p>全部代码在都放在： <a href="https://github.com/dongyuanxin/node-blockchain" target="_blank" rel="noopener">https://github.com/dongyuanxin/node-blockchain</a> </p>
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#技术调研"><span class="toc-text">技术调研</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#区块定义"><span class="toc-text">区块定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#链结构定义"><span class="toc-text">链结构定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-起源块"><span class="toc-text">1. 起源块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-计算下一个区块"><span class="toc-text">2. 计算下一个区块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-插入区块"><span class="toc-text">3. 插入区块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-批量插入"><span class="toc-text">4. 批量插入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-为什么需要批量插入？"><span class="toc-text">5. 为什么需要批量插入？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#效果测试"><span class="toc-text">效果测试</span></a></li></ol>
+  </div>
+</aside>
+  
+    <aside class="passage-copyright">
+      <div>本文作者: 董沅鑫</div>
+      
+        <div>
+          原文链接: 
+          <a href target="_blank">https://godbmw.com/passages/2019-05-02-node-block-chain/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/tags/ES6/"><i class="fa fa-tags"></i>ES6</a>
+     
+      <a href="/tags/Node/"><i class="fa fa-tags"></i>Node</a>
+     
+      <a href="/tags/区块链/"><i class="fa fa-tags"></i>区块链</a>
+     
+      <a href="/tags/数据结构/"><i class="fa fa-tags"></i>数据结构</a>
+     
+      <a href="/tags/后台开发/"><i class="fa fa-tags"></i>后台开发</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="disqus">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-warning" style="color: #FB8C00"></i> 请针对 Disqus 开启代理 
+    </p>
+    <div id="disqus_thread"></div>
+    <script async>
+      var disqus_config = function() {
+        this.page.url = `${window.location.origin}${window.location.pathname}`;
+        this.page.identifier = "2019-05-02-node-block-chain";
+      };
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://godbmw.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">实验室</h5>
+        
+          <span class="site-footer-item">
+            <a href="https://github.com/dongyuanxin/webpack-demos" target="_blank">Webpack4 Demos</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://github.com/dongyuanxin/theme-ad" target="_blank">Theme Art Design</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://github.com/dongyuanxin/theme-bmw" target="_blank">Theme BMW</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://github.com/dongyuanxin/news-emotion" target="_blank">金融情感分析模型</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://github.com/dongyuanxin/music-api-next" target="_blank">Music API Next</a>
+          </span>
+        
+      </div>
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">技术社交</h5>
+        
+          <span class="site-footer-item">
+            <a href="https://juejin.im/user/5b91fcf06fb9a05d3c7fd4a5" target="_blank">JueJin</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://segmentfault.com/u/godbmw" target="_blank">SegmentDefault</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://www.jianshu.com/u/d1570f4a618a" target="_blank">简书</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://www.zhihu.com/people/godbmw/activities" target="_blank">知乎</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://blog.csdn.net/AsuraDong" target="_blank">CSDN</a>
+          </span>
+        
+      </div>
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">博客推荐</h5>
+        
+          <span class="site-footer-item">
+            <a href="https://github.com/dongyuanxin/blog" target="_blank">博客精彩文章</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰的官方网站</a>
+          </span>
+        
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i>
+        <span id="busuanzi_container_site_pv">您是本站第 <span id="busuanzi_value_site_pv"></span> 位访客</span>
+        | <a href="http://www.miit.gov.cn/" target="_blank">粤ICP备18028400号-1</a>
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> 深度合作: yuanxin.me@gmail.com | QQ交流群: 534018786
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+        
+          <div>
+            <img src="/images/wechat.png" alt="WeChat">
+            
+              <p>WeChat</p>
+            
+          </div>
+        
+          <div>
+            <img src="/images/alipay.png" alt="AliPay">
+            
+              <p>AliPay</p>
+            
+          </div>
+        
+      </div>
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/passages/2019-05-17-why-i-stopped-using-sass/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/passages/2019-04-16-axios/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#disqus_thread" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    <a href="javascript:void(0);" id="site-reward">
+      <i class="fa fa-thumbs-up"></i>
+    </a>
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+    <a id="share-btn-facebook" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-facebook"></i>
+    </a>
+  
+  
+    <a id="share-btn-weibo" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-weibo"></i>
+    </a>
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124601890-1"></script>
+  <script async>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-124601890-1');
+  </script>
+
+
+
+  <script async>
+  (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+  </script>
+
+
+
+  <script async>
+    (function(){
+    var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?bbf5bdfcccab2efb9fd4e96c19271f1a":"https://jspassport.ssl.qhimg.com/11.0.1.js?bbf5bdfcccab2efb9fd4e96c19271f1a";
+    document.write('<script src="' + src + '" id="sozz"><\/script>');
+    })();
+  </script>
+
+
+    
+  </body>
+</html>
