@@ -45,7 +45,8 @@ function aaa(){
     #sed -i '' 's/juejin\.im\/user\/5b91fcf06fb9a05d3c7fd4a5/juejin\.im/g' $1
     #sed -i '' 's/GODBMW/AMo/g' $1
     #sed -i '' 's/github.com\/dongyuanxin\/blog/github\.com\/theshaodi/g' $1
-    sed -i '' 's/godbmw\.com\/atom.xml/dingyueRSS/g' $1
+    #sed -i '' 's/godbmw\.com\/atom.xml/dingyueRSS/g' $1
+    sed -i '' 's/本文作者: 少迪/本文作者: 董沅鑫/g' $1
 }
 
 for real_path in $(find $1 -path "*.html")
