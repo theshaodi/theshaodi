@@ -11,6 +11,7 @@ then
   exit
 fi
 
+
 function aaa(){
     sed -i '' 's/董沅鑫/少迪/g' $1
     sed -i '' 's/网站/小站/g' $1
@@ -34,4 +35,8 @@ function aaa(){
     sed -i '' 's/src="\/images/src="\/theshaodi\/images/g' $1
 }
 
-aaa $1
+for real_path in $(find $1 -path "*.html")
+do
+  echo ${real_path}
+  aaa ${real_path}
+done
