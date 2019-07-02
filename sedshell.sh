@@ -49,7 +49,10 @@ function aaa(){
     #sed -i '' 's/本文作者: 少迪/本文作者: 董沅鑫/g' $1
     #sed -i '' 's/来点音乐公司技术合伙人, 现在腾讯(深圳)web实习,//g' $1
     #sed -i '' 's/disqus_thread/disqus_thread_comment/g' $1
-    sed -i '' 's/请针对 Disqus 开启代理/Disqus评论功能已关闭/g' $1
+    #sed -i '' 's/请针对 Disqus 开启代理/Disqus评论功能已关闭/g' $1
+    #sed -i '' 's/版权声明: 本博客所有文章除特别声明外, 均采用 //g' $1
+    #sed -i '' 's/<a href="https\:\/\/creativecommons\.org\/licenses\/by-nc-sa\/4\.0\/">CC BY-NC-SA 4\.0<\/a> 许可协议\.//g' $1
+    sed -i '' 's/转载请注明出处/版权声明：转载请注明出处/g' $1
 }
 
 for real_path in $(find $1 -path "*.html")
