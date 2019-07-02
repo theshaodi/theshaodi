@@ -47,7 +47,9 @@ function aaa(){
     #sed -i '' 's/github.com\/dongyuanxin\/blog/github\.com\/theshaodi/g' $1
     #sed -i '' 's/godbmw\.com\/atom.xml/dingyueRSS/g' $1
     #sed -i '' 's/本文作者: 少迪/本文作者: 董沅鑫/g' $1
-    sed -i '' 's/来点音乐公司技术合伙人, 现在腾讯(深圳)web实习,//g' $1
+    #sed -i '' 's/来点音乐公司技术合伙人, 现在腾讯(深圳)web实习,//g' $1
+    #sed -i '' 's/disqus_thread/disqus_thread_comment/g' $1
+    sed -i '' 's/请针对 Disqus 开启代理/Disqus评论功能已关闭/g' $1
 }
 
 for real_path in $(find $1 -path "*.html")
