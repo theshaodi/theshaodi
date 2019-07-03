@@ -52,7 +52,8 @@ function aaa(){
     #sed -i '' 's/请针对 Disqus 开启代理/Disqus评论功能已关闭/g' $1
     #sed -i '' 's/版权声明: 本博客所有文章除特别声明外, 均采用 //g' $1
     #sed -i '' 's/<a href="https\:\/\/creativecommons\.org\/licenses\/by-nc-sa\/4\.0\/">CC BY-NC-SA 4\.0<\/a> 许可协议\.//g' $1
-    sed -i '' 's/转载请注明出处/版权声明：转载请注明出处/g' $1
+    #sed -i '' 's/转载请注明出处/版权声明：转载请注明出处/g' $1
+    sed -i '' 's/一点也不安静/一点也不安静呢/g' $1
 }
 
 for real_path in $(find $1 -path "*.html")
